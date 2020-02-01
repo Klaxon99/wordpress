@@ -3,6 +3,12 @@
 
 add_action('wp_enqueue_scripts', 'style_theme');
 add_action('wp_footer', 'scripts_theme');
+add_action('after_setup_theme', 'theme_register_nav_menu');
+
+function theme_register_nav_menu() {
+    register_nav_menu('top', 'Меню в шапке');
+    register_nav_menu('footer', 'Меню в подвале');
+}
 
 function style_theme(){
     wp_enqueue_style('style', get_stylesheet_uri());
