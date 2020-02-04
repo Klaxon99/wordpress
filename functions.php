@@ -21,6 +21,17 @@ function register_my_widgets() {
 function theme_register_nav_menu() {
     register_nav_menu('top', 'Меню в шапке');
     register_nav_menu('footer', 'Меню в подвале');
+    add_theme_support( 'title-tag' );
+    add_theme_support( 'post-thumbnails', array( 'post' ) );
+    add_image_size('post_thumb',1300,500,true);
+    add_filter('navigation_markup_template', 'my_navigation_template', 10, 2 );
+function my_navigation_template( $template, $class ){
+	return '
+	<nav class="navigation %1$s" role="navigation">
+		<div class="nav-links">%3$s</div>
+	</nav>    
+	';
+}
 }
 
 function style_theme(){
